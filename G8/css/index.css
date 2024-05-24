@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fjalla+One&family=Satisfy&display=swap');
+
+:root {
+    --main-color: #aeffc6;
+    --main-dark-color: #1b8a12;
+    --main-bg-color: #f9f9f9;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+a {
+    text-decoration: none;    
+    color: var(--main-dark-color);
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.5rem;
+}
+
+h1 {
+    font-family: "Fjalla One", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+}
+
+body.portada {
+    background-image: url(../assets/img/portada.jpg);
+    background-size: cover;
+    background-position: center top;
+}
+
+
+.contenedor {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+header {
+    box-shadow: 0px 0px 10px #5555;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar {
+    background-color: var(--main-color);
+}
+
+.nav-item {
+    text-transform: uppercase;
+}
+
+.dropdown-item {
+    text-transform: capitalize;
+}
+
+#navbarSupportedContent {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.eslogan {
+    font-family: "Satisfy", cursive;
+    font-weight: 400;
+    font-size: 2.5rem;
+    text-align: center;
+    bottom: 1em;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    font-style: italic;
+    text-shadow: 1px 1px 10px #000;
+}
+
+.subeslogan {
+    color: #fff;
+    bottom: 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    text-shadow: 1px 1px 10px #000;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    color: #000;
+}
+
+aside {
+    position: relative;
+    background-color: #e8e8e8;
+    width: 200px;
+    max-width: 200px;
+    min-width: 200px;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.contenedor-categorias {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 20px;
+}
+
+main {
+    flex-grow: 1;
+    margin-right: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.articulos {
+    margin-top: 2rem;
+}
+
+.lista-articulos {
+    display: grid;
+    list-style: none;
+    padding: 0;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+article {
+    overflow: hidden;
+    margin: .5rem;
+    padding: 3em;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: #fff;
+    color: #000;
+    
+}
+
+.tienda article {
+    padding: 0;
+    text-align: center;
+}
+
+.tienda article:hover {
+    box-shadow: 0 0 10px #ddd;
+}
+
+.articulo-imagen img {
+    width: 100%;
+}
+
+.articulo-info {
+    padding: .5em;
+}
+
+.articulo-info p {
+    margin-bottom: 0;
+}
+
+.articulo-precio {
+    color: var(--main-dark-color);
+    font-weight: 700;
+}
+
+.social-icon {
+    width: 50px;
+    position: relative;
+    display: inline-block;
+    margin: 0 .5em;
+}
+
+.social-icon img {
+    width: 100%;
+    -webkit-filter: invert(50%) sepia(50%) saturate(100000%) hue-rotate(100deg) brightness(100%) contrast(80%);
+    filter: invert(50%) sepia(50%) saturate(100000%) hue-rotate(100deg) brightness(100%) contrast(80%);
+}
+
+.social-icon img:hover {
+    -webkit-filter: none;
+    filter:none;
+}
+
+@media only screen and (max-width: 1200px) {}
+@media only screen and (max-width: 1025px) {
+
+    aside, main {
+        margin: 0;
+    }
+
+    .lista-articulos {
+        grid-template-columns: 33.3333% 33.3333% 33.3333%;
+    }
+}
+@media only screen and (max-width: 769px) {
+    .contenido {
+        display: block;
+    }
+    aside {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+
+    .contenedor-categorias {
+        display: block;
+        text-align: center;
+    }
+
+    .contenedor-categorias h2 {
+        display: none;
+    }
+
+    .categorias {
+        list-style: none;
+        display: inline-flex;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    .categorias li {
+        display: inline-grid;
+        margin: 0 .8em;
+        align-content: center;
+    }
+}
+@media only screen and (max-width: 481px) {
+    .lista-articulos {
+        grid-template-columns: 50% 50%;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .lista-articulos {
+        grid-template-columns: 100%;
+    }
+}
