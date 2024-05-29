@@ -139,7 +139,7 @@ main {
     grid-template-columns: 25% 25% 25% 25%;
 }
 
-article {
+article, .detalle {
     overflow: hidden;
     margin: .5rem;
     padding: 3em;
@@ -150,12 +150,12 @@ article {
     
 }
 
-.tienda article {
+.tienda .detalle {
     padding: 0;
     text-align: center;
 }
 
-.tienda article:hover {
+.tienda .detalle:hover {
     box-shadow: 0 0 10px #ddd;
 }
 
