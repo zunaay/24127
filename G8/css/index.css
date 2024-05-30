@@ -179,6 +179,10 @@ article, .detalle {
 
 /* nosotros */
 
+.social {
+    margin-bottom: 3em;
+}
+
 .social-icon {
     width: 50px;
     position: relative;
@@ -195,6 +199,10 @@ article, .detalle {
 .social-icon img:hover {
     -webkit-filter: none;
     filter:none;
+}
+
+iframe {
+    width: 100%;
 }
 
 /* producto */
