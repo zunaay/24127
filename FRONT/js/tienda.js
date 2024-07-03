@@ -1,28 +1,39 @@
-document.querySelector("body").onload = () => {
-    cargarArticulos();
-    document.querySelector(".contenedor").style.display = "block";
-};
+document.addEventListener("DOMContentLoaded", () => {
 
-const cargarArticulos = () => {
+    const fetchArticulos = async () => {
+        try {
+            const respuesta = await axios.get(`http://localhost:7070/articulos`);
+            cargarArticulos(respuesta.data);
+            document.querySelector(".contenedor").style.display = "block";
+            
+        } catch (error) {
+            console.error("Error al cargar los articulos: ", error);
+        };
+    };
+
+    fetchArticulos();
+});
+
+const cargarArticulos = (articulos) => {
 
     // Cargar articulos segun tipo
-    let tipo = articulos.filter(v => v.tipo == "Hombre");
-    dibujarArticulos(tipo, ".articulos.hombre .lista-articulos");
+    const hombre = articulos.filter(v => v.tipo == "Hombre");
+    dibujarArticulos(hombre, ".articulos.hombre .lista-articulos");
     document.querySelector("#hombre").innerText = "Hombre";
 
-    tipo = articulos.filter(v => v.tipo == "Mujer");
-    dibujarArticulos(tipo, ".articulos.mujer .lista-articulos");
+    const mujer = articulos.filter(v => v.tipo == "Mujer");
+    dibujarArticulos(mujer, ".articulos.mujer .lista-articulos");
     document.querySelector("#mujer").innerText = "Mujer";
 
-    tipo = articulos.filter(v => v.tipo == "Niños");
-    dibujarArticulos(tipo, ".articulos.nino .lista-articulos");
+    const nino = articulos.filter(v => v.tipo == "Niños");
+    dibujarArticulos(nino, ".articulos.nino .lista-articulos");
     document.querySelector("#nino").innerText = "Niños";
 
 };
 
 const dibujarArticulos = (datos, elemento) => {
 
-    let padre = document.querySelector(elemento);
+    const padre = document.querySelector(elemento);
     padre.innerHTML = "";
 
     for (t = 0; t < datos.length; t++) {
@@ -66,4 +77,4 @@ const dibujarArticulos = (datos, elemento) => {
         padre.appendChild(fragmento);
 
     };
-}
+};

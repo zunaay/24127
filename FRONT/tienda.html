@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
-<body class="productos">
+<body class="tienda" onload="cuentaCarrito();">
     <div class="contenedor" style="display: none;">
         <header>
             <nav class="navbar navbar-expand-lg">
@@ -18,7 +18,7 @@
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>              
+                    </button>
                 </div>
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav">
@@ -31,61 +31,64 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a href="tienda.html" class="nav-link active">Tienda</a></li>
-                        <li class="nav-item"><a class="nav-link" href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="carrito.html">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <div id="cuenta-carrito"></div>
+                        </a></li>
                     </ul>
                 </div>
-                
+
             </nav>
         </header>
         <div class="contenido">
-            <ul class="navegacion">
-                <li><a href="tienda.html">Tienda</a></li>
-            </ul>
+            <aside>
+                <section class="contenedor-categorias">
+                    <h2>Categorías</h2>
+                    <ul class="categorias">
+                        <li class="hombres"><a href="#hombre">Hombre</a></li>
+                        <li class="mujer"><a href="#mujer">Mujer</a></li>
+                        <li class="ninos"><a href="#nino">Niños</a></li>
+                    </ul>
+                </section>
+            </aside>
             <main>
-                
-                <div class="panel-principal">
-                    <div class="imagen-contenedor"></div>
-                </div>
-                <aside>
-                    <section class="detalles">
-                        <h2>Nombre del producto</h2>
-                        <div class="precio">$ 1.000</div>
-                        <h5>Métodos de pago</h5>
-                        <div class="tarjetas-contenedor">
-                            <img src="https://github.com/muffinresearch/payment-icons/raw/master/svg/flat/amex.svg" alt="American Express">
-                            <img src="https://raw.githubusercontent.com/muffinresearch/payment-icons/master/svg/flat/mastercard.svg" alt="MasterCard">
-                            <img src="https://github.com/muffinresearch/payment-icons/raw/master/svg/flat/visa.svg" alt="Visa">
-                            <img src="https://github.com/muffinresearch/payment-icons/raw/master/svg/flat/paypal.svg" alt="Paypal">
-                            
-                            
-                        </div>
-                        
-                        <h5>Talles</h5>
-                        <div class="talles">
-                            <input class="XS" type="button" value="XS">
-                            <input class="S" type="button" value="S">
-                            <input class="M" type="button" value="M">
-                            <input class="L" type="button" value="L">
-                            <input class="XL" type="button" value="XL">
-                            <input class="XXL" type="button" value="XXL">
-                        </div>
-                        <div class="talles-info"></div>
 
-
-                        <div class="boton-carrito">
-                            <input type="button" value="AÑADIR AL CARRITO">
-                        </div>
-
+                <section id="articulos">
+                    <h2>Artículos</h2>
+                    <section class="articulos hombre">
+                        <h3 id="hombre">Hombre</h3>
+                        <ul class="lista-articulos"></ul>
                     </section>
-                </aside>
+                    <section class="articulos mujer">
+                        <h3 id="mujer">Mujer</h3>
+                        <ul class="lista-articulos"></ul>
+                    </section>
+                    <section class="articulos nino">
+                        <h3 id="nino">Niños</h3>
+                        <ul class="lista-articulos"></ul>
+                    </section>
+                </section>
             </main>
-            
         </div>
+        <footer class="footer">
+
+            <div class="social">
+              <a class="facebook" href="https://facebook.com" title="Seguinos en Facebook" target="_blank">
+              </a>
+              <a class="instagram" href="https://instagram.com" title="Seguinos en Instagram" target="_blank">
+              </a>
+              <a class="tiktok" href="https://tiktok.com" title="Seguinos en TikTok" target="_blank">
+              </a>
+            </div>
+        
+            <p> &copy; 2024 - Todos los derechos reservados</p>
+        </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/24760464c6.js" crossorigin="anonymous"></script>
-    <script src="data/articulos.js"></script>
-    <script src="js/productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/cuentaCarrito.js"></script>
+    <script src="./js/tienda.js"></script>
 </body>
 </html>

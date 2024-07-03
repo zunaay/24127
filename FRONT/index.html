@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
-<body class="tienda">
-    <div class="contenedor" style="display: none;">
+<body onload="cuentaCarrito();">
+    <div class="contenedor">
         <header>
             <nav class="navbar navbar-expand-lg">
                 <div id="logo" class="container-fluid">
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="">
                         <h1>Indumentaria G8</h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
                 </div>
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a href="./" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="" class="nav-link active">Home</a></li>
                         <li class="nav-item dropdown">
                             <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ayuda</a>
                             <ul class="dropdown-menu">
@@ -30,48 +30,45 @@
                                 <li><a href="contacto.html" class="dropdown-item">Contacto</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="tienda.html" class="nav-link active">Tienda</a></li>
-                        <li class="nav-item"><a class="nav-link" href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                        <li class="nav-item"><a href="tienda.html" class="nav-link">Tienda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="carrito.html">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <div id="cuenta-carrito"></div>
+                        </a></li>
                     </ul>
-                </div>
-                
+                </div>                
             </nav>
         </header>
-        <div class="contenido">
-            <aside>
-                <section class="contenedor-categorias">
-                    <h2>Categorías</h2>
-                    <ul class="categorias">
-                        <li class="hombres"><a href="#hombre">Hombre</a></li>
-                        <li class="mujer"><a href="#mujer">Mujer</a></li>
-                        <li class="ninos"><a href="#nino">Niños</a></li>
-                    </ul>
-                </section>
-            </aside>
-            <main>
-                
-                <section id="articulos">
-                    <h2>Artículos</h2>
-                    <section class="articulos hombre">
-                        <h3 id="hombre">Hombre</h3>
-                        <ul class="lista-articulos"></ul>
-                    </section>
-                    <section class="articulos mujer">
-                        <h3 id="mujer">Mujer</h3>
-                        <ul class="lista-articulos"></ul>
-                    </section>
-                    <section class="articulos nino">
-                        <h3 id="nino">Niños</h3>
-                        <ul class="lista-articulos"></ul>
-                    </section>
-                </section>
-            </main>
-        </div>
-    </div>
+        <main class="portada">
+            <div class="slide slide1">
+                <h2 class="eslogan">Viví al límite</h2>
+                <p class="subeslogan">Indumentaria Deportiva</p>
+            </div>
+            <div class="slide slide2">
+                <h2 class="eslogan">Viví al límite</h2>
+                <p class="subeslogan">Indumentaria Deportiva</p>
+            </div>
+            <div class="slide slide3">
+                <h2 class="eslogan">Viví al límite</h2>
+                <p class="subeslogan">Indumentaria Deportiva</p>
+            </div>
+        </main>
+        <footer class="footer">
 
+            <div class="social">
+              <a class="facebook" href="https://facebook.com" title="Seguinos en Facebook" target="_blank">
+              </a>
+              <a class="instagram" href="https://instagram.com" title="Seguinos en Instagram" target="_blank">
+              </a>
+              <a class="tiktok" href="https://tiktok.com" title="Seguinos en TikTok" target="_blank">
+              </a>
+            </div>
+        
+            <p> &copy; 2024 - Todos los derechos reservados</p>
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/24760464c6.js" crossorigin="anonymous"></script>
-    <script src="data/articulos.js"></script>
-    <script src="js/tienda.js"></script>
+    <script src="./js/cuentaCarrito.js"></script>
 </body>
 </html>

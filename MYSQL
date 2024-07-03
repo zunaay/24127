@@ -1,0 +1,82 @@
+CREATE SCHEMA `24127g8` DEFAULT CHARACTER SET utf8 ;
+
+CREATE TABLE `24127g8`.`articulos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `categoria` VARCHAR(45) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `imagen` VARCHAR(500) NOT NULL,
+  `precio` INT NOT NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE `24127g8`.`stocks` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `XS` INT NOT NULL,
+  `S` INT NOT NULL,
+  `M` INT NOT NULL,
+  `L` INT NOT NULL,
+  `XL` INT NOT NULL,
+  `XXL` INT NOT NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE `24127g8`.`ventas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `productos` VARCHAR(100) NOT NULL,
+  `cantidad` VARCHAR(100) NOT NULL,
+  `importe` INT NOT NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE `24127g8`.`mensajes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `telefono` VARCHAR(45) NULL,
+  `asunto` VARCHAR(45) NULL,
+  `mensaje` VARCHAR(1000) NOT NULL,
+  `createdAt` DATETIME NULL,
+  `updatedAt` DATETIME NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('1', 'Short deportivo', 'Pantalones', 'Hombre', 'https://acdn.mitiendanube.com/stores/001/661/615/products/28692e5e-834a-4f9e-9543-1009d0d528b2-76686304731feff8da16935062351714-1024-1024.jpg', '21390');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('2', 'Camiseta básica', 'Remeras', 'Hombre', 'https://m.media-amazon.com/images/I/71VHA7WyzWL._AC_UY1000_.jpg', '32100');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('3', 'Top deportivo', 'Remeras', 'Mujer', 'https://http2.mlstatic.com/D_NQ_NP_827722-MLA54295549670_032023-O.webp', '21200');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('4', 'Calzas básicas', 'Pantalones', 'Mujer', 'https://startlap.com.ar/wp-content/uploads/2022/04/Calza-Fox-de-mujer-Boundary-negra-casual-dama-urbana-clasica-deporte-gym-indumentaria-startlap-tucuman-02.jpg', '28700');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('5', 'Remera básica', 'Remeras', 'Niños', 'https://assets.adidas.com/images/w_500,h_500,f_auto,q_auto,fl_lossy,c_fill,g_auto/6365d60fb28a4603b19aaf62011b6c15_9366/remera-adicolor-trefoil.jpg', '14900');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('6', 'Short deportivo', 'Pantalones', 'Niños', 'https://d3fvqmu2193zmz.cloudfront.net/items_2/uid_commerces.1/uid_items_2.FDBZFEMO9J17/500x500/64F9D00D87EF8-Short-Deportivo-Jovencito-U-3s-Kn-Sho.webp', '15600');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('7', 'Buzo con capucha', 'Abrigos', 'Mujer', 'https://http2.mlstatic.com/D_NQ_NP_855937-MLA52731784106_122022-O.webp', '32400');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('8', 'Campera', 'Abrigos', 'Mujer', 'https://www.vandalia.com.ar/media/catalog/product/cache/1/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/7/8/7876_campera_con_capucha_negra_2_.jpg', '45000');
+INSERT INTO `24127g8`.`articulos` (`id`, `nombre`, `categoria`, `tipo`, `imagen`, `precio`) VALUES ('9', 'Campera', 'Abrigos', 'Hombre', 'https://acdn.mitiendanube.com/stores/001/661/615/products/07dbc155-20f5-4284-be6f-5b4ae6c480a2-561f49c2193f77cbd917078622037306-1024-1024.jpg', '30290');
+
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('1', '408', '45', '21', '351', '0', '21');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('2', '202', '235', '492', '0', '320', '20');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('3', '5', '203', '150', '121', '150', '204');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('4', '0', '0', '358', '12', '20', '1');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('5', '2', '1', '10', '2', '9', '62');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('6', '21', '30', '35', '68', '0', '65');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('7', '56', '20', '0', '62', '20', '0');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('8', '21', '56', '98', '20', '48', '62');
+INSERT INTO `24127g8`.`stocks` (`id`, `XS`, `S`, `M`, `L`, `XL`, `XXL`) VALUES ('9', '87', '54', '81', '18', '62', '0');
+
+INSERT INTO `24127g8`.`ventas` (`id`, `productos`, `cantidad`, `talles`, `importe`) VALUES (1,'4','1','XXL',28700);
+INSERT INTO `24127g8`.`ventas` (`id`, `productos`, `cantidad`, `talles`, `importe`) VALUES (2,'6,6','1,3','XS,XXL',62400);
+INSERT INTO `24127g8`.`ventas` (`id`, `productos`, `cantidad`, `talles`, `importe`) VALUES (3,'7,7','1,1','XL,XS',64800);
+INSERT INTO `24127g8`.`ventas` (`id`, `productos`, `cantidad`, `talles`, `importe`) VALUES (4,'2,2','5,4','XL,M',288900);
+INSERT INTO `24127g8`.`ventas` (`id`, `productos`, `cantidad`, `talles`, `importe`) VALUES (5,'2','3','XS',96300);
+INSERT INTO `24127g8`.`ventas` (`id`, `productos`, `cantidad`, `talles`, `importe`) VALUES (6,'4,4,1','1,2,10','XS,M,XS',300000);
+
+INSERT INTO `24127g8`.`mensajes` (`id`, `nombre`, `email`, `telefono`, `asunto`, `mensaje`) VALUES ('1', 'Juan Perez', 'juanp@mail.com', '123456', 'Cambio', 'Hola esto es un mensaje de prueba.');
+INSERT INTO `24127g8`.`mensajes` (`id`, `nombre`, `email`, `telefono`, `asunto`, `mensaje`) VALUES ('2', 'Alberto Lopez', 'alopez@mail.com', '987654', 'Otro asunto', 'Segundo mensaje de prueba.');
