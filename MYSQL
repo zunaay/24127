@@ -31,6 +31,7 @@ CREATE TABLE `24127g8`.`ventas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `productos` VARCHAR(100) NOT NULL,
   `cantidad` VARCHAR(100) NOT NULL,
+  `talles` VARCHAR(100) NOT NULL,
   `importe` INT NOT NULL,
   `createdAt` DATETIME NULL,
   `updatedAt` DATETIME NULL,
