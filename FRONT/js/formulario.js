@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
     
                 try {
-                    await axios.post(`http://localhost:${port}/mensajes/`, nuevoMensaje);
+                    await axios.post(`${dbhost}/mensajes/`, nuevoMensaje);
                     alert("Mensaje enviado.");
                     document.querySelector("#contact").reset();
     

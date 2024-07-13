@@ -1,5 +1,3 @@
-const port = 7070;
-
 document.addEventListener("DOMContentLoaded", () => {
     // Obtener parámetros
     const ParametrosURL = new URLSearchParams(window.location.search);
@@ -7,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fetchArticulos = async (id) => {
         try {
-            const articulo = await axios.get(`http://localhost:${port}/articulos/${id}`);
+            const articulo = await axios.get(`${dbhost}/articulos/${id}`);
 
             cargarProducto(articulo.data);
             document.querySelector(".contenedor").style.display = "block";
@@ -53,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const mostrarStock = async (id) => {
         try {
-            const respuesta = await axios.get(`http://localhost:${port}/stock/${id}`);
+            const respuesta = await axios.get(`${dbhost}/stock/${id}`);
             const stock = respuesta.data;
 
             const talle = (document.querySelector(".activo").classList.value).split(" ")[0];

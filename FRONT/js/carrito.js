@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const fetchArticulos = async () => {
 
         try {
-            const articulos = await axios.get(`http://localhost:${port}/articulos`);
+            const articulos = await axios.get(`${dbhost}/articulos`);
             mostrarCarrito(articulos.data);
     
         } catch (error) {
@@ -117,9 +117,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             try {
                 // Es necesario comprobar el stock!
-                const respuesta = await axios.get(`http://localhost:${port}/stock`);
+                const respuesta = await axios.get(`${dbhost}/stock`);
                 const stock = respuesta.data;
-                const respuesta2 = await axios.get(`http://localhost:${port}/articulos`);
+                const respuesta2 = await axios.get(`${dbhost}/articulos`);
                 const articulos = respuesta2.data;
 
                 const carrito = obtenerCarrito();
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         };
         
                         try {
-                            await axios.put(`http://localhost:${port}/stock/${productos[i]}`, actualizarStock);
+                            await axios.put(`${dbhost}/stock/${productos[i]}`, actualizarStock);
                         } catch (error) {
                             console.error("Error al actualizar el stock: ", error);
                         };
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     };
 
                     try {
-                        await axios.post(`http://localhost:${port}/ventas`, nuevaCompra);
+                        await axios.post(`${dbhost}/ventas`, nuevaCompra);
                         // Vaciar carrito
                         vaciarCarrito();
                         alert("¡Muchas gracias por su compra!")

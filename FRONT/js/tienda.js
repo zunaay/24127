@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fetchArticulos = async () => {
         try {
-            const respuesta = await axios.get(`http://localhost:7070/articulos`);
+            const respuesta = await axios.get(`${dbhost}/articulos`);
             cargarArticulos(respuesta.data);
             document.querySelector(".contenedor").style.display = "block";
             

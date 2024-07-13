@@ -1,5 +1,3 @@
-const port = 7070;
-
 document.addEventListener("DOMContentLoaded", () => {
     const tablaArticulos = document.querySelector("#seccion-articulos table tbody");
     const tablaVentas = document.querySelector("#seccion-ventas table tbody");
@@ -11,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             tablaArticulos.innerHTML = "";
 
-            const respuesta = await axios.get(`http://localhost:${port}/articulos`);
+            const respuesta = await axios.get(`${dbhost}/articulos`);
             const articulos = respuesta.data;
 
             articulos.forEach(articulo => {
@@ -74,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             tablaVentas.innerHTML = "";
 
-            const respuesta = await axios.get(`http://localhost:${port}/ventas`);
+            const respuesta = await axios.get(`${dbhost}/ventas`);
             const ventas = respuesta.data;
 
             ventas.forEach(venta => {
@@ -127,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             tablaMensajes.innerHTML = "";
 
-            const respuesta = await axios.get(`http://localhost:${port}/mensajes`);
+            const respuesta = await axios.get(`${dbhost}/mensajes`);
             const mensajes = respuesta.data;
 
             mensajes.forEach(mensaje => {
@@ -191,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#mostrar-stock").removeAttribute("style");
 
         try {
-            const respuesta = await axios.get(`http://localhost:${port}/stock/${id}`);
+            const respuesta = await axios.get(`${dbhost}/stock/${id}`);
             const talle = respuesta.data;
 
             // Obtener celdas 
@@ -224,9 +222,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#editar-articulo").removeAttribute("style");
 
         try {
-            const resArt = await axios.get(`http://localhost:${port}/articulos/${id}`);
+            const resArt = await axios.get(`${dbhost}/articulos/${id}`);
             const articulo = resArt.data;
-            const resStock = await axios.get(`http://localhost:${port}/stock/${id}`);
+            const resStock = await axios.get(`${dbhost}/stock/${id}`);
             const stock = resStock.data;
 
             document.querySelector("#form-editar-articulo").setAttribute("data-articulo", id);
@@ -259,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            await axios.put(`http://localhost:${port}/articulos/${id}`, actualizarArticulo);
+            await axios.put(`${dbhost}/articulos/${id}`, actualizarArticulo);
             alert("Artículo actualizado con éxito.");
             fetchArticulos();
 
@@ -279,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            await axios.put(`http://localhost:${port}/stock/${id}`, actualizarStock);
+            await axios.put(`${dbhost}/stock/${id}`, actualizarStock);
             alert("Stock actualizado con éxito.");
             
         } catch (error) {
@@ -293,8 +291,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (confirm(text)) {
 
             try {
-                await axios.delete(`http://localhost:${port}/articulos/${id}`);
-                await axios.delete(`http://localhost:${port}/stock/${id}`);
+                await axios.delete(`${dbhost}/articulos/${id}`);
+                await axios.delete(`${dbhost}/stock/${id}`);
                 alert("Artículo eliminado con éxito");
                 fetchArticulos();
                
@@ -325,8 +323,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Es necesario añadir su respectivo stock !
                 const nuevoStock = { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 }
     
-                await axios.post(`http://localhost:${port}/articulos/`, nuevoArticulo);
-                await axios.post(`http://localhost:${port}/stock/`, nuevoStock);
+                await axios.post(`${dbhost}/articulos/`, nuevoArticulo);
+                await axios.post(`${dbhost}/stock/`, nuevoStock);
                 alert("Artículo añadido con éxito");
     
                 // Limpiar formulario
@@ -354,7 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#venta-info").textContent = `Venta # ${id}`;
 
         try {
-            const respuesta = await axios.get(`http://localhost:${port}/ventas/${id}`);
+            const respuesta = await axios.get(`${dbhost}/ventas/${id}`);
             const ventas = respuesta.data;
 
             const articulos = ventas.productos.split(",");
@@ -371,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fila = document.createElement("tr");
 
                 try {
-                    const respArt = await axios.get(`http://localhost:${port}/articulos/${articulos[i]}`);
+                    const respArt = await axios.get(`${dbhost}/articulos/${articulos[i]}`);
                     const articulo = respArt.data;
 
                     const celdaID = document.createElement("td");
@@ -414,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (confirm(text)) {
 
             try {
-                await axios.delete(`http://localhost:${port}/ventas/${id}`);
+                await axios.delete(`${dbhost}/ventas/${id}`);
                 alert("Venta eliminada con éxito.");
                 fetchVentas();
                 
@@ -431,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#mostrar-mensaje").removeAttribute("style");
 
         try {
-            const respuesta = await axios.get(`http://localhost:${port}/mensajes/${id}`);
+            const respuesta = await axios.get(`${dbhost}/mensajes/${id}`);
             const mensaje = respuesta.data;
 
             document.querySelector("#autor-mensaje").textContent = `Mensaje de ${mensaje.nombre}:`
@@ -448,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (confirm(text)) {
 
             try {
-                await axios.delete((`http://localhost:${port}/mensajes/${id}`));
+                await axios.delete((`${dbhost}/mensajes/${id}`));
                 alert("Mensaje eliminado con éxito.");
                 fetchMensajes();
 
