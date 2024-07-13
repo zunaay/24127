@@ -33,7 +33,7 @@ const crearArticulo = async (req, res) => {
 // Actualizar articulo
 const actualizarArticulo = async (req, res) => {
     try {
-        await articulosModel.update(res.body, {
+        await articulosModel.update(req.body, {
             where: {id: req.params.id}
         });
         res.json({"message": "Articulo actualizado con éxito"});
