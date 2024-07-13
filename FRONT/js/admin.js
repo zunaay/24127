@@ -217,21 +217,90 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    const editarArticulo = (id) => { // pendiente
+    const editarArticulo = async (id) => {
         // Muestra popup y oculta otras secciones
         document.querySelector("#layout-popup").style.display = "flex";
         ocultarSeccionesPopup();
         document.querySelector("#editar-articulo").removeAttribute("style");
 
+        try {
+            const resArt = await axios.get(`http://localhost:${port}/articulos/${id}`);
+            const articulo = resArt.data;
+            const resStock = await axios.get(`http://localhost:${port}/stock/${id}`);
+            const stock = resStock.data;
+
+            document.querySelector("#form-editar-articulo").setAttribute("data-articulo", id);
+            document.querySelector("#editar-nombre").value = articulo.nombre;
+            document.querySelector("#editar-categoria").value = articulo.categoria;
+            document.querySelector("#editar-tipo").value = articulo.tipo;
+            document.querySelector("#editar-imagen").value = articulo.imagen;
+            document.querySelector("#editar-precio").value = articulo.precio;
+            
+            document.querySelector("#form-editar-stock").setAttribute("data-stock", id);
+            document.querySelector("#nuevo-xs").value = stock.XS;
+            document.querySelector("#nuevo-s").value = stock.S;
+            document.querySelector("#nuevo-m").value = stock.M;
+            document.querySelector("#nuevo-l").value = stock.L;
+            document.querySelector("#nuevo-xl").value = stock.XL;
+            document.querySelector("#nuevo-xxl").value = stock.XXL;
+
+        } catch (error) {
+            console.error("Error al cargar el articulo: ", error);
+        };
     };
 
-    const eliminarArticulo = (id) => { // pendiente
+    const confirmarEdicionArticulo = async (id) => {
+        const actualizarArticulo = {
+            nombre: document.querySelector("#editar-nombre").value,
+            categoria: document.querySelector("#editar-categoria").value,
+            tipo: document.querySelector("#editar-tipo option:checked").value,
+            imagen: document.querySelector("#editar-imagen").value,
+            precio: document.querySelector("#editar-precio").value
+        };
+
+        try {
+            await axios.put(`http://localhost:${port}/articulos/${id}`, actualizarArticulo);
+            alert("Artículo actualizado con éxito.");
+            fetchArticulos();
+
+        } catch (error) {
+            console.error("Error al actualizar artículo: ", error);
+        };
+    };
+
+    const confirmarEdicionStock = async (id) => {
+        const actualizarStock = {
+            XS: document.querySelector("#nuevo-xs").value,
+            S: document.querySelector("#nuevo-s").value,
+            M: document.querySelector("#nuevo-m").value,
+            L: document.querySelector("#nuevo-l").value,
+            XL: document.querySelector("#nuevo-xl").value,
+            XXL: document.querySelector("#nuevo-xxl").value
+        };
+
+        try {
+            await axios.put(`http://localhost:${port}/stock/${id}`, actualizarStock);
+            alert("Stock actualizado con éxito.");
+            
+        } catch (error) {
+            console.error("Error al actualizar stock: ", error);
+        };
+    };
+
+    const eliminarArticulo = async (id) => {
         const text = `¿Está seguro que desea eliminar este artículo?`;
 
         if (confirm(text)) {
-            alert(`Eliminar articulo ${id}`);
 
-
+            try {
+                await axios.delete(`http://localhost:${port}/articulos/${id}`);
+                await axios.delete(`http://localhost:${port}/stock/${id}`);
+                alert("Artículo eliminado con éxito");
+                fetchArticulos();
+               
+            } catch (error) {
+                console.error("Error al eliminar el artículo:", error);
+            };
         };
     };
 
@@ -339,13 +408,19 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    const eliminarVenta = (id) => { // pendiente
+    const eliminarVenta = async (id) => {
         const text = `¿Está seguro que desea eliminar esta venta?`;
 
         if (confirm(text)) {
-            alert(`Eliminar venta ${id}`);
 
-
+            try {
+                await axios.delete(`http://localhost:${port}/ventas/${id}`);
+                alert("Venta eliminada con éxito.");
+                fetchVentas();
+                
+            } catch (error) {
+                console.error("Error al eliminar la venta:", error);
+            };
         };
     };
 
@@ -367,47 +442,58 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     };
 
-    const eliminarMensaje = (id) => { // pendiente
+    const eliminarMensaje = async (id) => {
         const text = `¿Está seguro que desea eliminar este mensaje?`;
         
         if (confirm(text)) {
-            alert(`Eliminar mensaje ${id}`);
 
+            try {
+                await axios.delete((`http://localhost:${port}/mensajes/${id}`));
+                alert("Mensaje eliminado con éxito.");
+                fetchMensajes();
 
+            } catch (error) {
+                console.error("Error al eliminar el mensaje:", error);
+            };
         };        
     };
 
 
+    const ocultarSeccionesPopup = () => {
+        document.querySelector("#mostrar-stock").style.display = "none";
+        document.querySelector("#editar-articulo").style.display = "none";
+        document.querySelector("#detalles-venta").style.display = "none";
+        document.querySelector("#mostrar-mensaje").style.display = "none";
+    };
 
+
+    // EVENTOS FORMULARIOS
 
     document.querySelector("#form-nuevo-articulo").addEventListener("submit", (event) => {
         event.preventDefault();
         anadirArticulo();
     });
+
+    document.querySelector("#form-editar-articulo").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const id = parseInt(document.querySelector("#form-editar-articulo").getAttribute("data-articulo"));
+        confirmarEdicionArticulo(id);
+    });
+
+    document.querySelector("#form-editar-stock").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const id = parseInt(document.querySelector("#form-editar-stock").getAttribute("data-stock"));
+        confirmarEdicionStock(id)
+    });
+
+
+    // OTROS EVENTOS 
+
+    document.querySelector("#layout-popup").addEventListener("click", () => {
+        document.querySelector("#layout-popup").style.display = "none";
+    });
+
+    document.querySelector("#popup-contenedor").addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
 });
-
-
-
-
-
-
-const ocultarSeccionesPopup = () => {
-    document.querySelector("#mostrar-stock").style.display = "none";
-    document.querySelector("#editar-articulo").style.display = "none";
-    document.querySelector("#detalles-venta").style.display = "none";
-    document.querySelector("#mostrar-mensaje").style.display = "none";
-};
-
-
-
-
-// EVENTOS 
-
-document.querySelector("#layout-popup").addEventListener("click", () => {
-    document.querySelector("#layout-popup").style.display = "none";
-});
-
-document.querySelector("#popup-contenedor").addEventListener("click", (e) => {
-    e.stopPropagation();
-});
-

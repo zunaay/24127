@@ -47,7 +47,7 @@
                     <p>¡Estamos siempre dispuestos a escuchar sus comentarios y sugerencias!</p>
                     <p>Si ha tenido un problema o tiene alguna consulta, rellene el formulario a continuación con las opciones deseadas y alguien de nuestro equipo se pondrá en contacto con usted lo más pronto posible.</p>
                     <div>
-                        <form action="#" id="contact">
+                        <form id="contact">
                             <fieldset class="formulario">
 
                             <div>* Campos obligatorios</div>
@@ -82,18 +82,13 @@
                             </select>
                             <br>
                             <br>
-                            <label>Agregar imágen:</label>
-                            <br>
-                            <input type="file" id="foto" accept="image/*">
-                            <br>
-                            <br>
                             <label>Mensaje *</label>
                             <br>
                             <textarea id="mensaje" cols="45" rows="5"></textarea>
                             <br>
                             <br>
                             <button type="reset">LIMPIAR</button>
-                            <button type="submit" onclick="validar()">ENVIAR</button>
+                            <button type="submit">ENVIAR</button>
                         </fieldset>
                         </form>
                     </div>
@@ -117,6 +112,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/24760464c6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/cuentaCarrito.js"></script>
     <script src="./js/formulario.js"></script>
 </body>
